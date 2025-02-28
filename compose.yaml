@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app  # Mapeo del código fuente para facilitar el desarrollo
+    ports:
+      - "40000:40000"  # Puerto para el depurador (Delve)
+      - "8080:8080"    # Puerto para la aplicación (si se requiere)
+  
