@@ -5,15 +5,17 @@ import (
 	"time"
 )
 
-func TestNewWork(t *testing.T) {
-	now := time.Now()
-	work := NewWork(now)
-	if work.StartedAt != now {
-		t.Errorf("Expected StartedAt to be %v, got %v", now, work.StartedAt)
-	}
-	if work.FinishedAt != nil {
-		t.Error("Expected FinishedAt to be nil for new work")
-	}
+func TestWork_NewWork(t *testing.T) {
+	t.Run("Should create a new work successfully", func(t *testing.T) {
+		now := time.Now()
+		work := NewWork(now)
+		if work.StartedAt != now {
+			t.Errorf("Expected StartedAt to be %v, got %v", now, work.StartedAt)
+		}
+		if work.FinishedAt != nil {
+			t.Error("Expected FinishedAt to be nil for new work")
+		}
+	})
 }
 
 func TestWork_Finish(t *testing.T) {
