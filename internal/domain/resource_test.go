@@ -35,7 +35,7 @@ func TestResource_NewResource(t *testing.T) {
 			t.Errorf("Expected no resource, %v got", resource)
 		}
 	})
-	t.Run("Should return a error when referer is empety", func(t *testing.T) {
+	t.Run("Should return a error when referer is empty", func(t *testing.T) {
 		URL := "http://dominio.com"
 		MIMEType := "text/html"
 		referer := ""
