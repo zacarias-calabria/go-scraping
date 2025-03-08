@@ -5,16 +5,6 @@ import (
 )
 
 func TestSite_NewSite(t *testing.T) {
-	t.Run("Should create a site successfully", func(t *testing.T) {
-		url := "http://domain.com"
-		site, err := NewSite(url)
-		if site.URL != url {
-			t.Errorf("Expected URL to be %s, got %s", url, site.URL)
-		}
-		if err != nil {
-			t.Errorf("Expected no error, got %v", err)
-		}
-	})
 	t.Run("Should return error when url is empty", func(t *testing.T) {
 		site, err := NewSite("")
 		if err == nil {
@@ -25,6 +15,20 @@ func TestSite_NewSite(t *testing.T) {
 		}
 		if site != nil {
 			t.Errorf("Expected nil site when url is empty, got %v", site)
+		}
+	})
+
+	t.Run("Should create a site successfully", func(t *testing.T) {
+		url := "http://domain.com"
+		site, err := NewSite(url)
+		if err != nil {
+			t.Errorf("Expected no error, got %v", err)
+		}
+		if site == nil {
+			t.Errorf("Expected site, got nil")
+		}
+		if site.URL != url {
+			t.Errorf("Expected URL to be %s, got %s", url, site.URL)
 		}
 	})
 }

@@ -34,6 +34,7 @@ func TestWork_Finish(t *testing.T) {
 			t.Errorf("Expected FinishedAt to be %v, got %v", finishTime, *work.FinishedAt)
 		}
 	})
+
 	t.Run("should not finish work that is already finished", func(t *testing.T) {
 		// Arrange
 		startTime := time.Now()
