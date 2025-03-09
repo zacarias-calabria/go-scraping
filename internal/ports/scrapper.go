@@ -7,5 +7,5 @@ import (
 )
 
 type Scrapper interface {
-	Scrape(ctx context.Context, url string) (*domain.Work, error)
+	Scrape(ctx context.Context, site *domain.Site) (*domain.Work, error)
 }
