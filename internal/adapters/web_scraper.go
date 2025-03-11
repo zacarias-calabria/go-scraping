@@ -50,7 +50,7 @@ func (w *WebScraper) Scrape(ctx context.Context, site *domain.Site) (*domain.Wor
 
 	// Handle errors
 	w.collector.OnError(func(r *colly.Response, err error) {
-		fmt.Printf("Error scraping %s: %v\n", r.Request.URL, err)
+		fmt.Printf("Error scraping %s: %v(%d)\n", r.Request.URL, err, r.StatusCode)
 	})
 
 	// Start scraping
