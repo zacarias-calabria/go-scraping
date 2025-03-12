@@ -15,12 +15,18 @@ func main() {
 	// Define command line flags
 	url := flag.String("url", "", "URL to scrape")
 	timeout := flag.Duration("timeout", 30*time.Second, "Timeout for the scraping process")
+	proxy := flag.String("proxy", "", "Proxy URL (e.g., http://proxy:port)")
 	flag.Parse()
 
 	if *url == "" {
 		fmt.Println("Error: URL is required")
 		flag.Usage()
 		os.Exit(1)
+	}
+
+	// Configure proxy if provided
+	if *proxy != "" {
+		os.Setenv("HTTP_PROXY", *proxy)
 	}
 
 	// Create site
@@ -37,6 +43,11 @@ func main() {
 	ctx, cancel := context.WithTimeout(context.Background(), *timeout)
 	defer cancel()
 
+	fmt.Printf("Starting scraping of %s\n", *url)
+	if *proxy != "" {
+		fmt.Printf("Using proxy: %s\n", *proxy)
+	}
+
 	// Execute scraping
 	work, err := scraper.Scrape(ctx, site)
 	if err != nil {
@@ -45,7 +56,7 @@ func main() {
 	}
 
 	// Print results
-	fmt.Printf("Scraping completed successfully\n")
+	fmt.Printf("\nScraping completed successfully\n")
 	fmt.Printf("Started at: %v\n", work.StartedAt)
 	fmt.Printf("Finished at: %v\n", *work.FinishedAt)
 	fmt.Printf("Duration: %v\n", work.FinishedAt.Sub(work.StartedAt))
