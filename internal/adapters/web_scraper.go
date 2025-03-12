@@ -49,7 +49,7 @@ func NewWebScraper() ports.Scrapper {
 		// Rotar User-Agent aleatoriamente
 		r.Headers.Set("User-Agent", userAgents[rand.Intn(len(userAgents))])
 		r.Headers.Set("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8")
-		//r.Headers.Set("Accept-Language", "en-US,en;q=0.5")
+		r.Headers.Set("Accept-Language", "en-US,en;q=0.5")
 		r.Headers.Set("Connection", "keep-alive")
 		r.Headers.Set("Upgrade-Insecure-Requests", "1")
 	})
