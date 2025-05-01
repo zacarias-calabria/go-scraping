@@ -1,107 +1,107 @@
 # Go Scraper
 
-Una aplicación de scraping web escrita en Go que permite extraer información de sitios web de manera eficiente y configurable.
+A web scraping application written in Go that allows efficient and configurable extraction of information from websites.
 
-## Características
+## Features
 
-- Scraping asíncrono de sitios web
-- Configuración de límites de velocidad
-- Rotación automática de User-Agent
-- Soporte para proxy
-- Control de tiempo de espera
-- Seguimiento de enlaces con profundidad configurable
-- Manejo de errores y códigos de estado HTTP
+- Asynchronous web scraping
+- Configurable rate limiting
+- Automatic User-Agent rotation
+- Proxy support
+- Timeout control
+- Configurable link depth tracking
+- Error handling and HTTP status codes management
 
-## Requisitos
+## Requirements
 
-- Go 1.24 o superior
-- Docker (opcional, para ejecución en contenedor)
+- Go 1.24 or higher
+- Docker (optional, for containerized execution)
 
-## Instalación
+## Installation
 
-1. Clona el repositorio:
+1. Clone the repository:
 ```bash
-git clone https://github.com/tu-usuario/go-scraping.git
+git clone https://github.com/your-username/go-scraping.git
 cd go-scraping
 ```
 
-2. Instala las dependencias:
+2. Install dependencies:
 ```bash
 go mod download
 ```
 
-## Uso
+## Usage
 
-La aplicación se puede ejecutar directamente o mediante Docker.
+The application can be run directly or using Docker.
 
-### Ejecución directa
+### Direct Execution
 
 ```bash
-go run main.go -url https://ejemplo.com [-timeout 30s] [-proxy http://proxy:puerto]
+go run main.go -url https://example.com [-timeout 30s] [-proxy http://proxy:port]
 ```
 
-Parámetros:
-- `-url`: URL del sitio a scrapear (requerido)
-- `-timeout`: Tiempo máximo de espera (por defecto: 30s)
-- `-proxy`: URL del proxy a utilizar (opcional)
+Parameters:
+- `-url`: URL of the site to scrape (required)
+- `-timeout`: Maximum wait time (default: 30s)
+- `-proxy`: Proxy URL to use (optional)
 
-### Ejecución con Docker
+### Docker Execution
 
-1. Construye la imagen:
+1. Build the image:
 ```bash
 docker compose build
 ```
 
-2. Inicia el contenedor:
+2. Start the container:
 ```bash
 docker compose up -d
 ```
 
-3. Ejecuta el scraper dentro del contenedor:
+3. Run the scraper inside the container:
 ```bash
-docker compose exec app go run main.go -url https://ejemplo.com
+docker compose exec app go run main.go -url https://example.com
 ```
 
-Para detener el contenedor:
+To stop the container:
 ```bash
 docker compose down
 ```
 
-## Estructura del Proyecto
+## Project Structure
 
 ```
 .
 ├── internal/
-│   ├── adapters/     # Implementaciones de adaptadores
-│   ├── domain/       # Modelos de dominio
-│   └── ports/        # Interfaces de puertos
-├── main.go          # Punto de entrada de la aplicación
-├── go.mod           # Archivo de dependencias
-├── go.sum           # Suma de verificación de dependencias
-├── Dockerfile       # Configuración de Docker
-└── compose.yaml     # Configuración de Docker Compose
+│   ├── adapters/     # Adapter implementations
+│   ├── domain/       # Domain models
+│   └── ports/        # Port interfaces
+├── main.go          # Application entry point
+├── go.mod           # Dependencies file
+├── go.sum           # Dependencies checksum
+├── Dockerfile       # Docker configuration
+└── compose.yaml     # Docker Compose configuration
 ```
 
-## Desarrollo
+## Development
 
-### Pruebas
+### Testing
 
-Para ejecutar las pruebas:
+To run tests:
 ```bash
 go test ./...
 ```
 
-### Depuración
+### Debugging
 
-La aplicación está configurada para depuración con Delve. Para depurar:
+The application is configured for debugging with Delve. To debug:
 
-1. Inicia el servidor de depuración:
+1. Start the debug server:
 ```bash
 dlv debug
 ```
 
-2. Conéctate al puerto 40000 desde tu IDE.
+2. Connect to port 40000 from your IDE.
 
-## Licencia
+## License
 
-Este proyecto está bajo la Licencia MIT. Ver el archivo LICENSE para más detalles. 
+This project is licensed under the MIT License. See the LICENSE file for details.
